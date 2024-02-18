@@ -1,4 +1,5 @@
 import { EntitySchema } from 'typeorm'
+import { Agendamento } from './agendamento'
 
 export interface Paciente {
   id: number
@@ -9,70 +10,53 @@ export interface Paciente {
   dataNascimento: Date
   genero: string
   endereco: string
+  agendamentos: Agendamento[]
 }
 
 export const PacienteSchema = new EntitySchema<Paciente>({
-  name: 'paciente',
+  name: "Paciente",
+  tableName: 'cadastro_pacientes',
   columns: {
     id: {
-      type: Number,
+      type: 'int',
       primary: true,
-      generated: true
+      generated: true,
     },
     nome: {
       type: String,
       length: 100,
-      nullable: false
+      nullable: false,
     },
     cpf: {
       type: String,
       length: 11,
-      nullable: false
+      nullable: false,
     },
     email: {
       type: String,
       length: 100,
-      nullable: false
+      nullable: false,
     },
     dataNascimento: {
-      type: 'date',
-      nullable: false
+      type: "date",
+      nullable: false,
     },
     genero: {
       type: String,
       length: 100,
-      nullable: false
+      nullable: false,
     },
     endereco: {
-      type: 'text',
-      nullable: false
+      type: "text",
+      nullable: false,
+    },
+  },
+  relations: {
+    agendamentos: {
+      type: 'many-to-one',
+      target: 'Agendameto',
+      joinColumn: true,
+      inverseSide: 'Paciente'
     }
   }
-})
-
-// @Entity()
-// export class Paciente {
-//   @PrimaryGeneratedColumn()
-//     id: number
-
-//   @Column({})
-//     name: string
-
-//   @Column()
-//     cpf: string
-
-//   @Column()
-//     email: string
-
-//   @Column()
-//     telefone: string
-
-//   @Column()
-//     dataNascimento: Date
-
-//   @Column()
-//     genero: string
-
-//   @Column()
-//     endereco: string
-// }
+});
