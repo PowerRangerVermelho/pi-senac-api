@@ -16,8 +16,10 @@ export const AppDataSource = new DataSource({
   password: 'pi-senac',
   database: 'sistema_podologia',
   synchronize: true,
+  metadataTableName: 'meta_data_custom',
+  relationLoadStrategy: 'join',
   logging: true,
-  entities: [ __dirname + 'schema/**/*.ts' ],
+  entities: [PacienteSchema, PodologoSchema, AgendamentoSchema ],
   migrations: [],
   subscribers: [],
   namingStrategy: new SnakeNamingStrategy()

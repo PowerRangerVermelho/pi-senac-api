@@ -53,8 +53,8 @@ export const PacienteSchema = new EntitySchema<Paciente>({
   },
   relations: {
     agendamentos: {
-      type: 'many-to-one',
-      target: 'Agendameto',
+      type: 'one-to-many',
+      target: 'Agendamento',
       joinColumn: true,
       inverseSide: 'Paciente'
     }
