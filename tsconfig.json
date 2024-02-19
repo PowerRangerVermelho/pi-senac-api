@@ -1,12 +1,23 @@
 {
-    "compilerOptions": {
-        "outDir": "./dist",
-        "module": "CommonJS",
-        "target": "ES6",
-        "esModuleInterop": true,
-        "allowJs": true,
-        "strictNullChecks": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
-    }
+  "compilerOptions": {
+    // "lib": ["es5", "es6"],
+    // "moduleResolution": "node",
+    // "allowJs": true,
+    // "strictNullChecks": true,
+    // "noEmit": true,
+    "outDir": "dist",
+    "module": "CommonJS",
+    "target": "ES2019",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "rootDirs": ["src", "tests"],
+    "baseUrl": "src",
+    "paths": {
+      "@/tests/*": ["./tests/*"],
+      "@/*": ["*"]
+    },
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+  }
 }
