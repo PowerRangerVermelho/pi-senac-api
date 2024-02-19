@@ -2,6 +2,7 @@ version: '3'
 services:
   db:
     image: mysql:8
+    restart: always
     container_name: db
     ports:
       - '3312:3306'
@@ -18,6 +19,7 @@ services:
   api:
     container_name: api-container
     image: node:18
+    restart: always
     working_dir: /usr/src/pi-senac
     command: bash -c "yarn && yarn start:dev"
     environment:
