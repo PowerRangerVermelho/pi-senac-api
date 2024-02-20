@@ -1,17 +1,5 @@
-import { EntitySchema } from 'typeorm'
-import { Agendamento } from './agendamento'
-
-export interface Paciente {
-  id: number
-  nome: string
-  cpf: string
-  email: string
-  telefone: string
-  dataNascimento: Date
-  genero: string
-  endereco: string
-  agendamentos: Agendamento[]
-}
+import { Paciente } from '@/domain/model/paciente';
+import { EntitySchema } from 'typeorm';
 
 export const PacienteSchema = new EntitySchema<Paciente>({
   name: "Paciente",
