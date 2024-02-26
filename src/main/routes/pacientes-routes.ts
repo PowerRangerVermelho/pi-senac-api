@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { adaptRoute } from '../adapters/express-route-adapter'
-import { makePacienteController } from '../factories/pacientes'
+import { makePacienteController } from '../factories/controllers/pacientes'
 
 export default (router: Router): void => {
   router.get('/pacientes', adaptRoute(makePacienteController()))
