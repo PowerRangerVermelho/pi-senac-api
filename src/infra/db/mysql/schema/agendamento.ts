@@ -1,4 +1,4 @@
-import { Agendamento } from '@/domain/model/agendamento'
+import { Agendamento } from '../../../../domain/model/agendamento'
 import { EntitySchema } from 'typeorm'
 
 export const AgendamentoSchema = new EntitySchema<Agendamento>({

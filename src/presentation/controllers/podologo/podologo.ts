@@ -1,13 +1,17 @@
-import { AddPodologo, PodologoDto } from "@/domain/usecase/add-podologo";
-import { ok, serverError } from "@/presentation/helpers/http-helper";
-import { Controller, HttpRequest, HttpResponse } from "@/presentation/protocols";
+import { AddPodologo, PodologoDto } from '../../../domain/usecase/add-podologo'
+import { ok, serverError } from '../../../presentation/helpers/http-helper'
+import {
+  Controller,
+  HttpRequest,
+  HttpResponse
+} from '../../../presentation/protocols'
 
 export class PodologoController implements Controller {
   private readonly addPodologo: AddPodologo
-  constructor (addPodologo: AddPodologo) {
+  constructor(addPodologo: AddPodologo) {
     this.addPodologo = addPodologo
   }
-  async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
+  async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const body = httpRequest.body
 
@@ -29,5 +33,4 @@ export class PodologoController implements Controller {
       serverError()
     }
   }
-
 }

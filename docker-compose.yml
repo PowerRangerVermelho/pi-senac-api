@@ -25,8 +25,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=rootpassword
       - DB_NAME=sistema_podologia
-      - DB_USER=root
-      - DB_PASSWORD='rootpassword'
+      - DB_USER=pi-senac-user
+      - DB_PASSWORD='pi-senac'
       - DB_PORT='3306'
     volumes:
       - .:/usr/src/pi-senac

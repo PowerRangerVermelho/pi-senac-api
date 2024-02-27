@@ -1,4 +1,4 @@
-import { Paciente } from '@/domain/model/paciente';
+import { Paciente } from '../../../../domain/model/paciente';
 import { EntitySchema } from 'typeorm';
 
 export const PacienteSchema = new EntitySchema<Paciente>({

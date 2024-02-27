@@ -1,4 +1,4 @@
-import { Podologo } from "@/domain/model/podologo";
+import { Podologo } from "../../../../domain/model/podologo";
 import { EntitySchema } from "typeorm";
 
 export const PodologoSchema = new EntitySchema<Podologo>({
