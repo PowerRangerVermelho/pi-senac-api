@@ -1,4 +1,5 @@
-import { AddPodologo, PodologoDto } from '../../../domain/usecase/add-podologo'
+import { DbAddpodologo } from '../../../data/usecase/db-add-podologo'
+import { AddPodologoModel } from '../../../domain/usecase/add-podologo'
 import { ok, serverError } from '../../../presentation/helpers/http-helper'
 import {
   Controller,
@@ -7,15 +8,15 @@ import {
 } from '../../../presentation/protocols'
 
 export class PodologoController implements Controller {
-  private readonly addPodologo: AddPodologo
-  constructor(addPodologo: AddPodologo) {
+  private readonly addPodologo: DbAddpodologo
+  constructor (addPodologo: DbAddpodologo) {
     this.addPodologo = addPodologo
   }
-  async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
+  async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const body = httpRequest.body
 
-      const podologoDto: PodologoDto = {
+      const podologoDto: AddPodologoModel = {
         senha: body.senha,
         nomeCompleto: body.nomeCompleto,
         cpf: body.cpf,
@@ -26,7 +27,7 @@ export class PodologoController implements Controller {
         endereco: body.endereco
       }
 
-      const podologo = this.addPodologo.add(podologoDto)
+      const podologo = await this.addPodologo.add(podologoDto)
 
       return ok(podologo)
     } catch (error) {
