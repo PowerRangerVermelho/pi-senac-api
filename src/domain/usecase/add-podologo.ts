@@ -1,6 +1,6 @@
 import { Podologo } from "../model/podologo";
 
-export interface PodologoDto {
+export interface AddPodologoModel {
   senha: string;
   nomeCompleto: string;
   cpf: string;
@@ -12,5 +12,5 @@ export interface PodologoDto {
 }
 
 export interface AddPodologo {
-  add (podologoDto: PodologoDto): Podologo
+  add (podologoDto: AddPodologoModel): Promise<Podologo>
 }
