@@ -1,17 +1,19 @@
+import { AddPaciente } from '../../../domain/usecase/add-paciente'
 import { ok, serverError } from '../../helpers/http-helper'
 import { Controller, HttpRequest, HttpResponse } from '../../protocols'
 
 export class PacienteController implements Controller {
-  async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
+
+  private readonly addPaciente: AddPaciente
+  constructor (addPaciente: AddPaciente) {
+    this.addPaciente = addPaciente
+  }
+  async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
-      return new Promise((resolve) => {
-        resolve(ok({ message: 'Olá' }))
-      })
-      // return ok({ message: 'Olá' })
+      const paciente = await this.addPaciente.add(httpRequest.body)
+      return ok(paciente)
     } catch (error) {
-      return new Promise((resolve) => {
-        resolve(serverError())
-      })
+      serverError()
     }
   }
 }
