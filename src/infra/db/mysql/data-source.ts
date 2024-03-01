@@ -1,8 +1,9 @@
 import 'reflect-metadata'
 import { DataSource } from 'typeorm'
+import { AgendamentoSchema } from './schema/agendamento'
+import { AnamneseSchema } from './schema/anamnese'
 import { PacienteSchema } from './schema/paciente'
 import { PodologoSchema } from './schema/podologo'
-import { AgendamentoSchema } from './schema/agendamento'
 
 const SnakeNamingStrategy =
   // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -19,7 +20,7 @@ export const AppDataSource = new DataSource({
   metadataTableName: 'meta_data_custom',
   relationLoadStrategy: 'join',
   logging: true,
-  entities: [PacienteSchema, PodologoSchema, AgendamentoSchema ],
+  entities: [PacienteSchema, PodologoSchema, AgendamentoSchema, AnamneseSchema],
   migrations: [],
   subscribers: [],
   namingStrategy: new SnakeNamingStrategy()
